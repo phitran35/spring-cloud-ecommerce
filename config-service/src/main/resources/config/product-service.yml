@@ -11,4 +11,4 @@ logging:
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
 
 springdoc:
-  packagesToScan: pl.piomin.services.department
+  packagesToScan: com.phitran.services.productservice

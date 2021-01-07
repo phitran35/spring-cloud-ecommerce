@@ -2,6 +2,9 @@ server:
   port: 8061
 
 eureka:
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+    enableSelfPreservation: false
   instance:
     hostname: localhost
   client:
