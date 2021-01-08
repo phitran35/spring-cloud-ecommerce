@@ -8,6 +8,9 @@ spring:
     stream:
       bindings:
         input:
+          # Define RabbitMQ exchange
+          destination: customer-activity
+          # Define durable queue
           group: customer-activity-queue
       default:
         contentType: application/json

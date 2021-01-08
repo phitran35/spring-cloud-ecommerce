@@ -29,7 +29,7 @@ public class AuditServiceApplication {
     public Docket swaggerPersonApi10() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.phitran.services.auditservice.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.phitran.services.auditservice"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(new ApiInfoBuilder().version("1.0").title("Audit API").description("Documentation Audit API v1.0").build());

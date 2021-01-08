@@ -15,7 +15,7 @@ COPY pom.xml .
 COPY src src
 
 # Package the application
-RUN ./mvnw package -DskipTests
+#RUN ./mvnw package -DskipTests
 COPY target/*.jar app.jar
 
 #### Stage 2: A minimal docker image with command to run the app

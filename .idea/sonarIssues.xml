@@ -43,6 +43,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../icommerce-master/product-service/src/main/resources/application.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-microservices-new-master/employee-service/src/main/java/pl/piomin/services/employee/EmployeeApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../sample-spring-microservices-new-master/employee-service/src/main/resources/bootstrap.yml">
           <value>
             <set />
@@ -58,12 +68,32 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/audit-service/.gitignore">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/audit-service/Dockerfile">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/audit-service/pom.xml">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/audit-service/src/main/java/com/phitran/services/auditservice/AuditServiceApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/audit-service/src/main/java/com/phitran/services/auditservice/event/CustomerActivityEventProcessor.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/audit-service/src/main/java/com/phitran/services/auditservice/repository/CustomerActivityRepository.java">
           <value>
             <set />
           </value>
@@ -103,6 +133,21 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/config-service/src/main/resources/config/discovery-service.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/config-service/src/main/resources/config/gateway-service.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/config-service/src/main/resources/config/product-service.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/config-service/src/test/java/com/phitran/services/configservice/ConfigServiceApplicationTests.java">
           <value>
             <set />
@@ -119,6 +164,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/discovery-service/src/test/java/com/phitran/services/discoveryservice/DiscoveryServiceApplicationTests.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/docker-compose.yml">
           <value>
             <set />
           </value>
@@ -144,6 +194,66 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/product-service/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/ProductServiceApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/aop/CustomerAuditAspect.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/config/SecurityConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/controller/GlobalExceptionController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/controller/ProductController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/entity/Product.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/model/ProductRequest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/repository/ProductPriceHistoryRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/repository/ProductRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/service/ProductService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/resources/bootstrap.yml">
           <value>
             <set />
           </value>

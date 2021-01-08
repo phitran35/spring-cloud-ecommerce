@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:8200}
+  port: ${AUDIT_PORT:8100}
 
 eureka:
   client:

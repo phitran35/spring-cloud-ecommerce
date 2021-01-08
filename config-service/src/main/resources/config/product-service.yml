@@ -1,5 +1,5 @@
 server:
-  port: 0
+  port: ${PRODUCT_PORT:8000}
 
 eureka:
   client:
