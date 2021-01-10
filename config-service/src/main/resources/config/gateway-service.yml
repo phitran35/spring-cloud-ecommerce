@@ -12,9 +12,9 @@ logging:
 
 zuul:
   routes:
-    product:
-      path: /product/**
+    products:
+      path: /products/**
       serviceId: product-service
-    audit:
-      path: /audit/**
+    auditservice:
+      path: /customer-activities/**
       serviceId: audit-service

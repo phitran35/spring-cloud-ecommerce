@@ -13,6 +13,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../levitate/levitate-pro-frontend/cloudbuild.yaml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../levitate/levitate-pro-frontend/kubernetes/gcp-k8s.yaml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../../levitate/levitate-pro-frontend/package.json">
           <value>
             <set />
@@ -43,7 +53,17 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../icommerce-master/product-service/src/main/java/com/nthieu/productservice/controller/ProductController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../icommerce-master/product-service/src/main/resources/application.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../icommerce-master/product-service/src/test/java/com/nthieu/productservice/ProductServiceApplicationTests.java">
           <value>
             <set />
           </value>
@@ -59,6 +79,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../sample-spring-microservices-new-master/organization-service/src/test/java/OrganizationRepositoryTest.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-microservices-new-master/proxy-service/src/main/java/pl/piomin/service/proxy/api/ProxyApi.java">
           <value>
             <set />
           </value>
@@ -178,6 +203,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/gateway-service/src/main/java/api/ProxyApi.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/gateway-service/src/main/java/com/phitran/services/gatewayservice/GatewayServiceApplication.java">
           <value>
             <set />
@@ -254,6 +284,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/product-service/src/main/resources/bootstrap.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/product-service/target/generated-sources/java/com/phitran/services/productservice/entity/QProduct.java">
           <value>
             <set />
           </value>

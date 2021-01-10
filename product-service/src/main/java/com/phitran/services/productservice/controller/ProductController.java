@@ -28,12 +28,12 @@ public class ProductController {
     @GetMapping
     public List<Product> getAllProducts(@QuerydslPredicate(root = Product.class) Predicate predicate,
                                         Pageable pageable, @RequestParam MultiValueMap<String, List<String>> allRequestParams,
-                                        @RequestHeader("Username") String customer) {
+                                        @RequestHeader(name="Username", required=false) String customer) {
         return productService.findAll(predicate, pageable);
     }
 
     @GetMapping("/{id}")
-    public Product getProductDetail(@PathVariable String id, @RequestHeader("Username") String customer) {
+    public Product getProductDetail(@PathVariable String id, @RequestHeader(name="Username", required=false) String customer) {
         return productService.findProductById(id);
     }
 

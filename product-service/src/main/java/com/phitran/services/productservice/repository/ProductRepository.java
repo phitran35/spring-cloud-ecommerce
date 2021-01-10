@@ -1,6 +1,7 @@
 package com.phitran.services.productservice.repository;
 
 import com.phitran.services.productservice.entity.Product;
+import com.phitran.services.productservice.entity.QProduct;
 import com.querydsl.core.types.dsl.StringExpression;
 import com.querydsl.core.types.dsl.StringPath;
 import org.springframework.data.jpa.repository.JpaRepository;
