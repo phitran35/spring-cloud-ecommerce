@@ -1,8 +1,11 @@
 package com.phitran.services.productservice.aop;
 
+import com.phitran.services.productservice.controller.ProductController;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.stream.messaging.Source;
@@ -24,6 +27,8 @@ public class CustomerAuditAspect {
     @Value("${spring.data.web.sort.sort-parameter:sort}")
     private String sortParameter;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomerAuditAspect.class);
+
     public CustomerAuditAspect(Source source) {
         this.source = source;
     }
@@ -35,6 +40,7 @@ public class CustomerAuditAspect {
         String productId = (String) methodArguments[0];
         String username = (String) methodArguments[1];
         CustomerActivity customerActivity = new CustomerActivity(username, LocalDateTime.now(), productId);
+        LOGGER.info("Product view detail audit activity {}", customerActivity);
         Message<CustomerActivity> message = MessageBuilder.withPayload(customerActivity).build();
         source.output().send(message);
     }
@@ -42,6 +48,7 @@ public class CustomerAuditAspect {
     @Before("execution(* com.phitran.services.productservice.controller.ProductController.getAllProducts(..))")
     @Async
     public void logUserFilterAndSort(JoinPoint joinPoint) {
+        LOGGER.info("Product filtering and sort audit activity {}", joinPoint);
         Object[] methodArguments = joinPoint.getArgs();
         Map<String, List<String>> requestParams = (Map<String, List<String>>) methodArguments[2];
         List<String> sortBy = requestParams.get(sortParameter);

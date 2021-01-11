@@ -15,6 +15,6 @@ zuul:
     products:
       path: /products/**
       serviceId: product-service
-    auditservice:
+    audit-service:
       path: /customer-activities/**
       serviceId: audit-service

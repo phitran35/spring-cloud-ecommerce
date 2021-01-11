@@ -48,6 +48,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../../levitate/project-management-j/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../../levitate/project-management-j/src/main/java/com/levitate/project/web/rest/ProjectResource.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../icommerce-master/api-gateway/src/main/java/com/nthieu/apigateway/AuthenticationPreFilter.java">
           <value>
             <set />
@@ -69,6 +79,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/../sample-spring-microservices-new-master/employee-service/src/main/java/pl/piomin/services/employee/EmployeeApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-microservices-new-master/employee-service/src/main/java/pl/piomin/services/employee/repository/EmployeeRepository.java">
           <value>
             <set />
           </value>
@@ -243,6 +258,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/aop/logging/LoggingAspect.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/config/SecurityConfig.java">
           <value>
             <set />
@@ -294,6 +314,11 @@
           </value>
         </entry>
         <entry key="/a.sql">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="/dummy.js">
           <value>
             <set />
           </value>

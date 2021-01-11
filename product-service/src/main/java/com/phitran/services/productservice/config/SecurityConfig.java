@@ -13,12 +13,12 @@ import org.springframework.security.web.session.ConcurrentSessionFilter;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.addFilterAfter(new CustomAuthenticationFilter(), ConcurrentSessionFilter.class);
-//        http.authorizeRequests()
+        http.addFilterAfter(new CustomAuthenticationFilter(), ConcurrentSessionFilter.class);
+        http.authorizeRequests()
 //                .antMatchers(ProductController.PRODUCT_PATH).authenticated()
 //                .antMatchers(ProductController.PRODUCT_PATH + "/*").authenticated()
-//                .anyRequest().permitAll();
-//        http.csrf().disable();
+                .anyRequest().permitAll();
+        http.csrf().disable();
     }
 
     @Override
