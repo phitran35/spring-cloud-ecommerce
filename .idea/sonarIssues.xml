@@ -63,6 +63,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../icommerce-master/docker-compose.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../icommerce-master/product-service/src/main/java/com/nthieu/productservice/controller/ProductController.java">
           <value>
             <set />
@@ -263,6 +268,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/config/CustomAuthenticationFilter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/config/SecurityConfig.java">
           <value>
             <set />
@@ -303,12 +313,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/resources/application.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/product-service/src/main/resources/bootstrap.yml">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/product-service/target/generated-sources/java/com/phitran/services/productservice/entity/QProduct.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/run.sh">
           <value>
             <set />
           </value>

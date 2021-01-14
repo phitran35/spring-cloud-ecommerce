@@ -1,6 +1,28 @@
 version: "3"
 
 services:
+#  discovery:
+#    image: piomin/discovery-service
+#    container_name: discovery-service
+#    build:
+#      context: ./discovery-service
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8761:8761"
+#
+#    gateway:
+#      image: piomin/gateway-service
+#      container_name: service-gateway
+#      build:
+#        context: ./gateway-service
+#        dockerfile: Dockerfile
+#      ports:
+#        - "8765:8765"
+#      environment:
+#        EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery:8761/eureka
+#      links:
+#        - discovery
+
   product-db:
     image: postgres
     volumes:
@@ -13,7 +35,7 @@ services:
       - POSTGRES_PASSWORD=123
       - POSTGRES_DB=product-db
 
-  mongo_db:
+  mongo:
     image: mongo
     volumes:
       - mongo-volume:/data/db
@@ -21,7 +43,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=admin
     ports:
-      - 27017:27017
+      - 27018:27017
     restart: unless-stopped
 
   redis:
@@ -32,7 +54,17 @@ services:
       - 6379:6379
     restart: unless-stopped
 
+  rabbitmq:
+    image: rabbitmq
+    volumes:
+      - rabbitmq-volume:/var/lib/rabbitmq
+    ports:
+      - 15677:15672
+      - 5677:5672
+    restart: unless-stopped
+
 volumes:
   postgres-volume: {}
   mongo-volume: {}
   redis-volume: {}
+  rabbitmq-volume: {}

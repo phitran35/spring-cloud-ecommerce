@@ -15,12 +15,13 @@ spring:
       default:
         contentType: application/json
   rabbitmq:
-    addresses: amqp://ubqnuwvx:pbzYBCKxYaYs5tuNdXvQoqssq5khq2Cq@skunk.rmq.cloudamqp.com/ubqnuwvx
+    host: localhost
+    port: 5677
   # spring data mongodb configuration
   data:
     mongodb:
       host: localhost
-      port: 32774
+      port: 27018
       database: customer-audit-activity
       authentication-database: admin
       username: admin
