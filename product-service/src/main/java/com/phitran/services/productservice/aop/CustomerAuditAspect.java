@@ -50,6 +50,7 @@ public class CustomerAuditAspect {
     public void logUserFilterAndSort(JoinPoint joinPoint) {
         LOGGER.info("Product filtering and sort audit activity {}", joinPoint);
         Object[] methodArguments = joinPoint.getArgs();
+        // get filter options
         Map<String, List<String>> requestParams = (Map<String, List<String>>) methodArguments[2];
         List<String> sortBy = requestParams.get(sortParameter);
         Map<String, List<String>> filterBy = new HashMap<>();

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+        <title>Hello Spring Security</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+        <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">
+            Logged in user: <span sec:authentication="name"></span> |
+            Roles: <span sec:authentication="principal.authorities"></span>
+            <div>
+                <form action="#" th:action="@{/logout}" method="post">
+                    <input type="submit" value="Logout" />
+                </form>
+            </div>
+<!--            <h1><p th:text="'Hello, ' + ${username} + '!'" /></h1>-->
+<!--            <p th:text="'accessToken: ' + ${accessToken.tokenValue}" /><br>-->
+            <span th:text="${#authentication.principal.attributes.name}">Joe Coder</span>
+        </div>
+        <div sec:authorize="!isAuthenticated()">
+            <h1>Spring Security SSO</h1>
+            <a href="securedPage">Login</a>
+        </div>
+    </body>
+</html>

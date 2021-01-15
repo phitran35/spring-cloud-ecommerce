@@ -1,3 +1,7 @@
+okta:
+  oauth2:
+    issuer: https://dev-8918335.okta.com/oauth2/default
+    audience: api://default
 spring:
   cloud:
     # Define durable queue
@@ -15,7 +19,7 @@ spring:
     port: 5677
     # spring data mongodb configuration
   datasource:
-    url: jdbc:postgresql://localhost:5432/product-db
+    url: jdbc:postgresql://localhost:5434/product-db
     username: root
     password: 123
   jpa:

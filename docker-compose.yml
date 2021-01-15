@@ -23,12 +23,24 @@ services:
 #      links:
 #        - discovery
 
+  auth-db:
+    image: postgres
+    volumes:
+      - auth-db-volume:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=auth-db
+
   product-db:
     image: postgres
     volumes:
-      - postgres-volume:/var/lib/postgresql/data
+      - product-db-volume:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - 5434:5432
     restart: unless-stopped
     environment:
       - POSTGRES_USER=root
@@ -64,7 +76,8 @@ services:
     restart: unless-stopped
 
 volumes:
-  postgres-volume: {}
+  product-db-volume: {}
+  auth-db-volume: {}
   mongo-volume: {}
   redis-volume: {}
   rabbitmq-volume: {}
