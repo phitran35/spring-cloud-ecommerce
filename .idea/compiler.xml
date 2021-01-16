@@ -11,12 +11,14 @@
         <module name="product-service" />
         <module name="cart-service" />
         <module name="order-service" />
+        <module name="auth" />
         <module name="config-service" />
         <module name="audit-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="audit-service" target="11" />
+      <module name="auth" target="11" />
       <module name="cart-service" target="11" />
       <module name="config-service" target="11" />
       <module name="discovery-service" target="11" />
@@ -28,6 +30,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="audit-service" options="-parameters" />
+      <module name="auth" options="-parameters" />
       <module name="cart-service" options="-parameters" />
       <module name="config-service" options="-parameters" />
       <module name="discovery-service" options="-parameters" />

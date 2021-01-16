@@ -12,10 +12,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/**").authorizeRequests()
-                .antMatchers("/", "/securedPage").permitAll()
-                .anyRequest().authenticated()
-                .and().oauth2Login()
-                .and().oauth2ResourceServer().jwt();;
+//                .antMatchers("/", "/securedPage", "/swagger-ui.html**").permitAll()
+                .anyRequest().permitAll()
+                .and().oauth2Login().defaultSuccessUrl("/securedPage")
+                .and().oauth2ResourceServer().jwt();
     }
 
 }

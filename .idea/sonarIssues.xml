@@ -108,6 +108,76 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-oauth2-microservices-with_database1/auth/src/main/java/pl/piomin/services/auth/AuthServer.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-oauth2-microservices-with_database1/auth/src/main/java/pl/piomin/services/auth/OAuth2Config.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-oauth2-microservices-with_database1/auth/src/main/java/pl/piomin/services/auth/OAuth2ResourceServerConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-oauth2-microservices-with_database1/auth/src/main/java/pl/piomin/services/auth/SecurityConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-oauth2-microservices-with_database1/auth/src/main/java/pl/piomin/services/auth/domain/Authority.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-oauth2-microservices-with_database1/auth/src/main/java/pl/piomin/services/auth/repository/AuthorityRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-oauth2-microservices-with_database1/auth/src/main/java/pl/piomin/services/auth/repository/UserRepository.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-oauth2-microservices-with_database1/auth/src/main/java/pl/piomin/services/auth/security/Authorities.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-oauth2-microservices-with_database1/auth/src/main/java/pl/piomin/services/auth/security/UserDetailsServiceImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-oauth2-microservices-with_database1/auth/src/main/java/pl/piomin/services/auth/security/UserNotActivatedException.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-oauth2-microservices-with_database1/auth/src/main/resources/application.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-oauth2-microservices-with_database1/gateway/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-oauth2-microservices-with_database1/gateway/src/main/java/pl/piomin/services/gateway/SecurityConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../sample-spring-oauth2-microservices-with_database1/gateway/src/main/java/pl/piomin/services/gateway/WebMvcConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/README.md">
           <value>
             <set />
@@ -158,6 +228,81 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/auth/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/auth/src/main/java/com/phitran/services/auth/AuthApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/auth/src/main/java/com/phitran/services/auth/SecurityConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/auth/src/main/java/com/phitran/services/auth/controller/AuthController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/auth/src/main/java/com/phitran/services/auth/domain/Authority.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/auth/src/main/java/com/phitran/services/auth/domain/User.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/auth/src/main/java/com/phitran/services/auth/security/UserDetailsServiceImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/auth/src/main/java/pl/piomin/services/auth/AuthServer.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/auth/src/main/java/pl/piomin/services/auth/SecurityConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/auth/src/main/java/pl/piomin/services/auth/repository/UserDetailsServiceImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/auth/src/main/java/pl/piomin/services/auth/security/UserDetailsServiceImpl.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/auth/src/main/resources/application.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/auth/src/main/resources/bootstrap.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/auth/src/main/resources/script/data.sql">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/auth/src/main/resources/script/schema.sql">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/config-service/pom.xml">
           <value>
             <set />
@@ -174,6 +319,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/config-service/src/main/resources/config/audit-service.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/config-service/src/main/resources/config/auth-server.yml">
           <value>
             <set />
           </value>
@@ -233,7 +383,62 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/gateway-service/src/main/java/com/phitran/services/gatewayservice/OktaOAuth2WebSecurity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/gateway-service/src/main/java/com/phitran/services/gatewayservice/SecurityConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/gateway-service/src/main/java/com/phitran/services/gatewayservice/SecurityConfiguration.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/gateway-service/src/main/java/com/phitran/services/gatewayservice/SwaggerConfiguration.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/gateway-service/src/main/java/com/phitran/services/gatewayservice/WebMvcConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/gateway-service/src/main/java/com/phitran/services/gatewayservice/controller/GreetingController.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/gateway-service/src/main/resources/application.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/gateway-service/src/main/resources/bootstrap.yml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/gateway-service/src/main/resources/templates/greeting.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/gateway-service/src/main/resources/templates/index.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/gateway-service/src/main/resources/templates/login.html">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/gateway-service/src/main/resources/templates/securedPage.html">
           <value>
             <set />
           </value>
@@ -258,6 +463,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/aop/CustomerActivity.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/aop/CustomerAuditAspect.java">
           <value>
             <set />
@@ -269,6 +479,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/config/CustomAuthenticationFilter.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/config/PersistenceAuditorAware.java">
           <value>
             <set />
           </value>
@@ -289,6 +504,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/entity/Product.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/product-service/src/main/java/com/phitran/services/productservice/model/CustomerActivity.java">
           <value>
             <set />
           </value>
@@ -329,6 +549,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/run.sh">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$APPLICATION_CONFIG_DIR$/consoles/db/c92e3ba5-f753-4e47-9623-9994fe58dbbc/console_1.sql">
           <value>
             <set />
           </value>

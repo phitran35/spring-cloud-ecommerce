@@ -8,6 +8,9 @@ import java.util.Optional;
 
 public class PersistenceAuditorAware implements AuditorAware<String> {
     @Override
+    /**
+     * get current auditor
+     */
     public Optional<String> getCurrentAuditor() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 

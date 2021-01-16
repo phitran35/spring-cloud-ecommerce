@@ -9,10 +9,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.querydsl.binding.QuerydslPredicate;
+import org.springframework.security.core.Authentication;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 
@@ -32,13 +34,14 @@ public class ProductController {
     @GetMapping
     public List<Product> getAllProducts(@QuerydslPredicate(root = Product.class) Predicate predicate,
                                         Pageable pageable, @RequestParam(required=false) MultiValueMap<String, List<String>> allRequestParams,
-                                        @RequestHeader(name="Username", required=false) String customer) {
+                                        @RequestHeader(name="Username", required=false) String customer, Principal principal) {
         LOGGER.info("Organization find all");
         return productService.findAll(predicate, pageable);
     }
 
     @GetMapping("/{id}")
-    public Product getProductDetail(@PathVariable String id, @RequestHeader(name="Username", required=false) String customer) {
+    public Product getProductDetail(@PathVariable String id, @RequestHeader(name="Username", required=false) String customer, Authentication authentication) {
+        LOGGER.info("Organization find: principal={}", authentication);
         LOGGER.info("Organization find: id={}", id);
         return productService.findProductById(id);
     }

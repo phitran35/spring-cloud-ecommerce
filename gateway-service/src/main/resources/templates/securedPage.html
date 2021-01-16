@@ -1,14 +1,14 @@
 <!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
 <body>
-<span th:text="${#authentication.principal.attributes.name}">Joe Coder</span>
-            <h1><p th:text="'Hello, ' + ${username} + '!'" /></h1>
-            <p th:text="'idToken: ' + ${idToken.tokenValue}" /><br/>
+            <h1><p th:text="'Hello, ' + ${#authentication.principal.attributes.email} + '!'" /></h1>
+<!--            <span th:text="Hello, '${#authentication.name}"></span><br/>-->
             <p th:text="'accessToken: ' + ${accessToken.tokenValue}" /><br>
+            <a href="swagger-ui.html">Click here to go to Swagger UI</a>
 </body>
 </html>

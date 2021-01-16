@@ -9,9 +9,7 @@ import java.util.Objects;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-@Builder
+@Data
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

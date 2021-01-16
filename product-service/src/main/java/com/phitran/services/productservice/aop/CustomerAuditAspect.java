@@ -35,6 +35,10 @@ public class CustomerAuditAspect {
 
     @Before("execution(* com.phitran.services.productservice.controller.ProductController.getProductDetail(..))")
     @Async
+    /**
+     * observer which product item user view then sending to MQ for auditing
+     * @param JoinPoint
+     */
     public void logUserViewProduct(JoinPoint joinPoint) {
         Object[] methodArguments = joinPoint.getArgs();
         String productId = (String) methodArguments[0];
@@ -47,6 +51,10 @@ public class CustomerAuditAspect {
 
     @Before("execution(* com.phitran.services.productservice.controller.ProductController.getAllProducts(..))")
     @Async
+    /**
+     * observer filter options to sending to MQ
+     * @param JoinPoint
+     */
     public void logUserFilterAndSort(JoinPoint joinPoint) {
         LOGGER.info("Product filtering and sort audit activity {}", joinPoint);
         Object[] methodArguments = joinPoint.getArgs();
@@ -59,10 +67,12 @@ public class CustomerAuditAspect {
                 filterBy.put(entry.getKey(), entry.getValue());
             }
         }
+        // send message payload to MQ
         if ((sortBy != null && !sortBy.isEmpty()) || (!filterBy.isEmpty())) {
             String username = (String) methodArguments[3];
             CustomerActivity customerActivity = new CustomerActivity(username,
                     LocalDateTime.now(), null, filterBy, sortBy);
+            LOGGER.info("Filter options and sort auditing {}", customerActivity);
             Message<CustomerActivity> message = MessageBuilder.withPayload(customerActivity).build();
             source.output().send(message);
         }

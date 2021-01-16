@@ -7,19 +7,12 @@
     <body>
         <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">
             Logged in user: <span sec:authentication="name"></span> |
-            Roles: <span sec:authentication="principal.authorities"></span>
-            <div>
-                <form action="#" th:action="@{/logout}" method="post">
-                    <input type="submit" value="Logout" />
-                </form>
-            </div>
-<!--            <h1><p th:text="'Hello, ' + ${username} + '!'" /></h1>-->
-<!--            <p th:text="'accessToken: ' + ${accessToken.tokenValue}" /><br>-->
-            <span th:text="${#authentication.principal.attributes.name}">Joe Coder</span>
+            <p>Roles: <span sec:authentication="principal.authorities"></span></p>
+            <a href="swagger-ui.html">Click here to go to Swagger UI</a>
         </div>
         <div sec:authorize="!isAuthenticated()">
             <h1>Spring Security SSO</h1>
-            <a href="securedPage">Login</a>
+            <a href="login">Click here to Login</a>
         </div>
     </body>
 </html>

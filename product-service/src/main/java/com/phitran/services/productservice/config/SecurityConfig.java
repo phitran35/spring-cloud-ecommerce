@@ -12,6 +12,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests(authorizeRequests -> authorizeRequests
+                        .antMatchers("/v2/api-docs**").permitAll()
                         .antMatchers("/**").authenticated()
                         .anyRequest().authenticated()
                 )

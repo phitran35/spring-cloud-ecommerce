@@ -16,14 +16,14 @@ public class GreetingController {
     @RequestMapping("/securedPage")
     public String securedPage(@AuthenticationPrincipal OidcUser oidcUser,
                               @RegisteredOAuth2AuthorizedClient("okta") OAuth2AuthorizedClient client, Model model, Principal principal) {
-        model.addAttribute("username", "2222");
+        model.addAttribute("username", principal.getName());
         model.addAttribute("idToken", oidcUser.getIdToken());
         model.addAttribute("accessToken", client.getAccessToken());
         return "securedPage";
     }
 
     @RequestMapping("/")
-    public String index(Model model, Principal principal) {
+    public String index(Model model, Principal principal, @AuthenticationPrincipal OidcUser oidcUser) {
         return "index";
     }
 }

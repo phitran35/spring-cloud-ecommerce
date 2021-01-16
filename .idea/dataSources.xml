@@ -7,5 +7,11 @@
       <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>
       <jdbc-url>mongodb://localhost:32774</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="auth-db@localhost" uuid="c92e3ba5-f753-4e47-9623-9994fe58dbbc">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5433/auth-db</jdbc-url>
+    </data-source>
   </component>
 </project>
