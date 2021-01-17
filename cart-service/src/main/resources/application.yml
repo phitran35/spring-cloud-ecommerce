@@ -1,13 +1,8 @@
 spring:
-  # spring data mongodb configuration
-  data:
-    mongodb:
-      host: localhost
-      port: 27018
-      database: cart-db
-      authentication-database: admin
-      username: admin
-      password: admin
+  # spring data redis configuration
+  redis:
+    host: localhost
+    port: 6379
 
 okta:
   oauth2:

@@ -1,7 +1,10 @@
 package com.phitran.services.cartservice.repository;
 
-import com.phitran.services.cartservice.domain.Cart;
-import org.springframework.data.repository.CrudRepository;
+import java.util.Collection;
 
-public interface CartRepository extends CrudRepository<Cart, String> {
+public interface CartRepository {
+    public void addItemToCart(String key, Object item);
+    public Collection<Object> getCart(String key, Class type);
+    public void deleteItemFromCart(String key, Object item);
+    public void deleteCart(String key);
 }

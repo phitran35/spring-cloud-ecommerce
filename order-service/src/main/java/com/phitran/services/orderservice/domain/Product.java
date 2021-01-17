@@ -1,9 +1,9 @@
-package com.phitran.services.cartservice.domain;
+package com.phitran.services.orderservice.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.redis.core.index.Indexed;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

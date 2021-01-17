@@ -1,26 +1,25 @@
-package com.phitran.services.cartservice;
+package com.phitran.services.orderservice;
 
 import feign.RequestInterceptor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-@EnableEurekaClient
 @SpringBootApplication
+@EnableDiscoveryClient
 @EnableSwagger2
 @EnableFeignClients
-public class CartServiceApplication {
+public class OrderServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CartServiceApplication.class, args);
+        SpringApplication.run(OrderServiceApplication.class, args);
     }
 
     @Bean
@@ -34,4 +33,5 @@ public class CartServiceApplication {
             }
         };
     }
+
 }

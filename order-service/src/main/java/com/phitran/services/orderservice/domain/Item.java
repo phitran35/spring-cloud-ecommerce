@@ -1,4 +1,4 @@
-package com.phitran.services.cartservice.domain;
+package com.phitran.services.orderservice.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

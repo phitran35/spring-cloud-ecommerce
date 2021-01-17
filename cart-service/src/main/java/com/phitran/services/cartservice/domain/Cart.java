@@ -4,20 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 @Data
-@Document
+@RedisHash("cart")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Cart {
     @Id
     @Indexed
-    private String customer;
-    private PersonalCart personalShoppingCart;
-
-    public Cart(String customer) {
-        this.customer = customer;
-    }
+    private String customerUsername;
 }

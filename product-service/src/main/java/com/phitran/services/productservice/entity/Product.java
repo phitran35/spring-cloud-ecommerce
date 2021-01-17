@@ -10,6 +10,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

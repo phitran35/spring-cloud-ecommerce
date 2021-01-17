@@ -1,0 +1,15 @@
+spring:
+  # spring data mongodb configuration
+  data:
+    mongodb:
+      host: localhost
+      port: 27018
+      database: order-db
+      authentication-database: admin
+      username: admin
+      password: admin
+
+okta:
+  oauth2:
+    issuer: https://dev-8918335.okta.com/oauth2/default
+    audience: api://default
