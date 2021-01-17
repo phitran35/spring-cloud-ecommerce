@@ -12,6 +12,7 @@ import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -42,7 +43,12 @@ public class CustomerAuditAspect {
     public void logUserViewProduct(JoinPoint joinPoint) {
         Object[] methodArguments = joinPoint.getArgs();
         String productId = (String) methodArguments[0];
-        String username = (String) methodArguments[1];
+        Authentication authentication = (Authentication) methodArguments[1];
+        if (!authentication.isAuthenticated()) {
+            LOGGER.info("Auditing product detail but no authenticated");
+            return;
+        }
+        String username = authentication.getName();
         CustomerActivity customerActivity = new CustomerActivity(username, LocalDateTime.now(), productId);
         LOGGER.info("Product view detail audit activity {}", customerActivity);
         Message<CustomerActivity> message = MessageBuilder.withPayload(customerActivity).build();
@@ -58,6 +64,13 @@ public class CustomerAuditAspect {
     public void logUserFilterAndSort(JoinPoint joinPoint) {
         LOGGER.info("Product filtering and sort audit activity {}", joinPoint);
         Object[] methodArguments = joinPoint.getArgs();
+        Authentication authentication = (Authentication) methodArguments[3];
+        if (!authentication.isAuthenticated()) {
+            LOGGER.info("Auditing product filter options but no authenticated");
+            return;
+        }
+        String username = authentication.getName();
+
         // get filter options
         Map<String, List<String>> requestParams = (Map<String, List<String>>) methodArguments[2];
         List<String> sortBy = requestParams.get(sortParameter);
@@ -67,9 +80,9 @@ public class CustomerAuditAspect {
                 filterBy.put(entry.getKey(), entry.getValue());
             }
         }
+
         // send message payload to MQ
         if ((sortBy != null && !sortBy.isEmpty()) || (!filterBy.isEmpty())) {
-            String username = (String) methodArguments[3];
             CustomerActivity customerActivity = new CustomerActivity(username,
                     LocalDateTime.now(), null, filterBy, sortBy);
             LOGGER.info("Filter options and sort auditing {}", customerActivity);

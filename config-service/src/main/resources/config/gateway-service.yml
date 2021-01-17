@@ -16,26 +16,9 @@ zuul:
   sensitive-headers:
     - Cookie, Authorization
   routes:
-    uaa:
-      path: /uaa/**
-      sensitiveHeaders:
-      serviceId: auth-server
     products:
       path: /products/**
       serviceId: product-service
-    audit-service:
+    audit:
       path: /customer-activities/**
       serviceId: audit-service
-
-#security:
-#  oauth2:
-#    sso:
-#      loginPath: /uaa/login
-#    client:
-#      accessTokenUri: http://localhost:8060/uaa/oauth/token
-#      userAuthorizationUri: http://localhost:8060/uaa/oauth/authorize
-#      clientAuthenticationScheme: form
-#    resource:
-#      userInfoUri: http://localhost:9999/uaa/user
-#      preferTokenInfo: false
-#  sessions: ALWAYS

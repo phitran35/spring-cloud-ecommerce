@@ -6,9 +6,10 @@
     <title>Home</title>
 </head>
 <body>
-            <h1><p th:text="'Hello, ' + ${#authentication.principal.attributes.email} + '!'" /></h1>
-<!--            <span th:text="Hello, '${#authentication.name}"></span><br/>-->
+            <h1><p th:text="'Hello, ' + ${#authentication.principal.attributes.name} + '!'" /></h1>
+            <p th:text="'Email address: ' + ${#authentication.principal.attributes.email}" />
             <p th:text="'accessToken: ' + ${accessToken.tokenValue}" /><br>
-            <a href="swagger-ui.html">Click here to go to Swagger UI</a>
+            <p /> Please copy the access token above, then go to Swagger UI to then paste it into Authorization box with the pattern: Bearer {token}. That means, please pre-fill Bearer and put the token next to</p>
+            <a href="swagger-ui.html" open="_blank">Click here to go to Swagger UI</a>
 </body>
 </html>
