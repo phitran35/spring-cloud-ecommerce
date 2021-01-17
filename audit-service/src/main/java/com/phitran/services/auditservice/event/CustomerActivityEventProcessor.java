@@ -1,6 +1,6 @@
 package com.phitran.services.auditservice.event;
 
-import com.phitran.services.auditservice.model.CustomerActivity;
+import com.phitran.services.auditservice.domain.CustomerActivity;
 import com.phitran.services.auditservice.repository.CustomerActivityRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

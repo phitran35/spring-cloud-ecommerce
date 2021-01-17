@@ -21,7 +21,7 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final ProductPriceHistoryRepository priceRepository;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductService.class);
 
     @Autowired
     public ProductService(ProductRepository productRepository, ProductPriceHistoryRepository priceRepository) {
@@ -65,6 +65,15 @@ public class ProductService {
     public Product update(Product newProduct) {
         trackPriceChange(newProduct);
         return productRepository.save(newProduct);
+    }
+
+    /**
+     * find all price activities by product id
+     * @param id
+     * @return
+     */
+    public List<ProductPriceHistory> findAllByProductId (String id) {
+        return priceRepository.findAllByProductId(Long.parseLong(id));
     }
 
     /**

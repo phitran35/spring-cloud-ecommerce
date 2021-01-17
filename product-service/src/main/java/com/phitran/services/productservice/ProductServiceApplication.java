@@ -50,7 +50,7 @@ public class ProductServiceApplication {
     }
 
     @Bean
-    public Docket swaggerPersonApi10() {
+    public Docket swaggerApi10() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.phitran.services.productservice.controller"))

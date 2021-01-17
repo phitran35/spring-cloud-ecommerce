@@ -1,9 +1,10 @@
 package com.phitran.services.auditservice.repository;
 
-import com.phitran.services.auditservice.model.CustomerActivity;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import com.phitran.services.auditservice.domain.CustomerActivity;
+import org.springframework.data.repository.CrudRepository;
 
-@RepositoryRestResource(collectionResourceRel = "customer-activities", path = "customer-activities")
-public interface CustomerActivityRepository extends MongoRepository<CustomerActivity, String> {
+import java.util.List;
+
+public interface CustomerActivityRepository extends CrudRepository<CustomerActivity, String> {
+    List<CustomerActivity> findByUsername(String username);
 }

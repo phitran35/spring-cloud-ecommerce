@@ -19,6 +19,9 @@ zuul:
     products:
       path: /products/**
       serviceId: product-service
-    audit:
+    audit-service:
       path: /customer-activities/**
       serviceId: audit-service
+    carts:
+      path: /carts/**
+      serviceId: cart-service

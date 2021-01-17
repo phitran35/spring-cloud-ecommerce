@@ -17,7 +17,6 @@ public class PersistenceAuditorAware implements AuditorAware<String> {
         if (authentication == null || !authentication.isAuthenticated()) {
             return Optional.empty();
         }
-        String username = (String) authentication.getPrincipal();
-        return Optional.of(username);
+        return Optional.of(authentication.getName());
     }
 }

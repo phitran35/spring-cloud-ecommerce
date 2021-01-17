@@ -1,11 +1,11 @@
 package com.phitran.services.productservice.controller;
 
 import com.phitran.services.productservice.entity.Product;
+import com.phitran.services.productservice.entity.ProductPriceHistory;
 import com.phitran.services.productservice.model.ProductRequest;
 import com.phitran.services.productservice.service.ProductService;
 import com.querydsl.core.types.Predicate;
 import io.swagger.annotations.*;
-import io.swagger.v3.oas.annotations.Parameter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +19,13 @@ import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
-import java.security.Principal;
 import java.util.List;
 
 
 @RestController
 @Api( tags = "Products")
-@RequestMapping(ProductController.PRODUCT_PATH)
+@RequestMapping("/products")
 public class ProductController {
-    public static final String PRODUCT_PATH = "/products";
     private final ProductService productService;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
@@ -62,7 +60,7 @@ public class ProductController {
                                         ) Pageable pageable,
                                         @ApiIgnore @RequestParam(required=false) MultiValueMap<String, List<String>> allRequestParams,
                                         @ApiIgnore  Authentication authentication) {
-        LOGGER.info("Organization find all");
+        LOGGER.info("Products find all");
         return productService.findAll(predicate, pageable);
     }
 
@@ -91,6 +89,16 @@ public class ProductController {
         LOGGER.info("Product add: {}", productRequest);
         Product newProduct = productRequest.toEntity();
         return productService.add(newProduct);
+    }
+
+    @GetMapping("/{id}/price-history")
+    @ApiOperation(value = "This method is used to get all product price history.")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", dataType = "string", paramType = "path")
+    })
+    public List<ProductPriceHistory> getProductPriceHistoryLog(@PathVariable String id) {
+        LOGGER.info("Product price history find: id={}", id);
+        return productService.findAllByProductId(id);
     }
 
 }
