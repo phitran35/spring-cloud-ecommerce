@@ -27,7 +27,7 @@ public class SwaggerConfig {
     public Docket swaggerApi10() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.phitran.services.cartservice.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.phitran.services.orderservice.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .securitySchemes(Lists.newArrayList(apiKey()))

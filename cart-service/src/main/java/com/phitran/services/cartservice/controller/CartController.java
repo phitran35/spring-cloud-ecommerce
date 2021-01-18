@@ -36,15 +36,15 @@ public class CartController {
         return cartService.getCart(authentication.getName());
     }
 
-    @GetMapping("{id}/get-all-items")
+    @GetMapping("/get-all-items")
     @ApiOperation(value = "This method is used to get cart items by cart id.")
-    public List<Item> getAllItemsFromCart(@PathVariable String id) {
-        LOGGER.info("Carts et-all-items-from-cart {}", id);
-        return cartService.getAllItemsFromCart(id);
+    public List<Item> getAllItemsFromCart(@ApiIgnore Authentication authentication) {
+        LOGGER.info("Carts et-all-items-from-cart {}", authentication.getName());
+        return cartService.getAllItemsFromCart(authentication.getName());
     }
 
     @PostMapping
-    @ApiOperation(value = "This method is used to add cart items from current user's cart.")
+    @ApiOperation(value = "This method is used to add cart items to current user's cart.")
     public List<Object> addItemToCart(
             @RequestParam("productId") Long productId,
             @RequestParam("quantity") Integer quantity,
@@ -52,21 +52,23 @@ public class CartController {
         LOGGER.info("Carts add items to cart for user {}", authentication.getName());
         String cartKey = authentication.getName();
         List<Object> cart = cartService.getCart(cartKey);
-        if (cart != null) {
-            if (cart.isEmpty()){
-                cartService.addItemToCart(cartKey, productId, quantity);
+
+        // init cart data in case of empty
+        if (cart == null || cart.isEmpty()) {
+            cartService.addItemToCart(cartKey, productId, quantity);
+        } else {
+            // update quantity and total price or add new items if not exist yet
+            if (cartService.checkIfItemIsExist(cartKey, productId)){
+                cartService.changeItemQuantity(cartKey, productId, quantity);
             } else {
-                if (cartService.checkIfItemIsExist(cartKey, productId)){
-                    cartService.changeItemQuantity(cartKey, productId, quantity);
-                } else {
-                    cartService.addItemToCart(cartKey, productId, quantity);
-                }
+                cartService.addItemToCart(cartKey, productId, quantity);
             }
         }
-        return cart;
+
+        return cartService.getCart(cartKey);
     }
 
-    @DeleteMapping()
+    @DeleteMapping
     @ApiOperation(value = "This method is used to entry cartfrom current user's cart.")
     public void deleteCart(
             @ApiIgnore Authentication authentication) {

@@ -37,11 +37,10 @@ public class OrderController {
     }
 
     @PostMapping
-    @ApiOperation(value = "This method is used to save order from current user.")
-    public ResponseEntity<Order> saveOrder(@RequestParam(name = "cartId") String cartId,
-            @ApiIgnore Authentication authentication) {
+    @ApiOperation(value = "This method is used to save order/ checkout from current user.")
+    public ResponseEntity<Order> saveOrder(@ApiIgnore Authentication authentication) {
         LOGGER.info("Order save order by user {}", authentication.getName());
-        List<Item> cart = cartClient.getAllItemsFromCart(cartId);
+        List<Item> cart = cartClient.getAllItemsFromCartFromCurrentUser();
         Order order = this.createOrder(cart, authentication.getName());
         try {
             orderService.saveOrder(order);
@@ -50,7 +49,8 @@ public class OrderController {
                     order,
                     HttpStatus.CREATED);
         } catch (Exception e) {
-            LOGGER.info("Order error when checkout order ", e.getMessage());
+            e.printStackTrace();
+            LOGGER.info("Order error when checkout order {}", e.getMessage());
             return new ResponseEntity<Order>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

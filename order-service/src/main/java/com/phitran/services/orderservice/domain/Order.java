@@ -18,7 +18,7 @@ import java.util.List;
 public class Order {
     @Id
     @Indexed
-    Long id;
+    String id;
     @Indexed
     String username;
     LocalDate orderedDate;

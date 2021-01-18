@@ -1,27 +1,130 @@
 version: "3"
 
 services:
-#  discovery:
-#    image: piomin/discovery-service
-#    container_name: discovery-service
+#  config-service:
+#    container_name: config-service
 #    build:
-#      context: ./discovery-service
+#      context: config-service
 #      dockerfile: Dockerfile
 #    ports:
-#      - "8761:8761"
+#      - "8088:8088"
+#    restart: always
+#    environment:
+#      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:8061/eureka
+#    networks:
+#      - icommerce-network
+#  discovery-service:
+#    container_name: discovery-service
+#    build:
+#      context: discovery-service
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8061:8061"
+#    restart: always
+#    environment:
+#      - CLOUD_CONFIG_URL=http://config-service:8088
+#    depends_on:
+#      - config-service
+##    entrypoint: ["./dockerize","-wait=tcp://config-service:8088","-timeout=60s","--","java", "org.springframework.boot.loader.JarLauncher"]
+#    networks:
+#      - icommerce-network
+
+#  gateway-service:
+#    container_name: gateway-service
+#    build:
+#      context: gateway-service
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8060:8060"
+#    restart: always
+#    environment:
+#      - CLOUD_CONFIG_URL=http://config-service:8088
+#    depends_on:
+#      - config-service
+#      - discovery-service
+#      - zipkin-server
+#    networks:
+#      - icommerce-network
 #
-#    gateway:
-#      image: piomin/gateway-service
-#      container_name: service-gateway
-#      build:
-#        context: ./gateway-service
-#        dockerfile: Dockerfile
-#      ports:
-#        - "8765:8765"
-#      environment:
-#        EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: http://discovery:8761/eureka
-#      links:
-#        - discovery
+#  audit-service:
+#    container_name: audit-service
+#    build:
+#      context: audit-service
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8200:8200"
+#    restart: always
+#    environment:
+#      - CLOUD_CONFIG_URL=http://config-service:8088
+#      - RABBITMQ_HOST=rabbitmq
+#      - MONGO_HOST=mongo
+#    depends_on:
+#      - config-service
+#      - discovery-service
+#      - zipkin-server
+#      - mongo
+#      - rabbitmq
+#    networks:
+#      - icommerce-network
+#
+#  product-service:
+#    container_name: product-service
+#    build:
+#      context: product-service
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8100:8100"
+#    restart: always
+#    environment:
+#      - CLOUD_CONFIG_URL=http://config-service:8088
+#      - RABBITMQ_HOST=rabbitmq
+#      - POSTGRESQL_HOST=product-db
+#    depends_on:
+#      - config-service
+#      - discovery-service
+#      - zipkin-server
+#      - product-db
+#      - rabbitmq
+#    networks:
+#      - icommerce-network
+#
+#  cart-service:
+#    container_name: cart-service
+#    build:
+#      context: cart-service
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8300:8300"
+#    restart: always
+#    environment:
+#      - CLOUD_CONFIG_URL=http://config-service:8088
+#      - REDIS_HOST=redis
+#    depends_on:
+#      - config-service
+#      - discovery-service
+#      - zipkin-server
+#      - redis
+#    networks:
+#      - icommerce-network
+#
+#  order-service:
+#    container_name: order-service
+#    build:
+#      context: order-service
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8400:8400"
+#    restart: always
+#    environment:
+#      - CLOUD_CONFIG_URL=http://config-service:8088
+#      - MONGO_HOST=mongo
+#    depends_on:
+#      - config-service
+#      - discovery-service
+#      - zipkin-server
+#      - mongo
+#    networks:
+#      - icommerce-network
 
   auth-db:
     image: postgres
@@ -34,6 +137,17 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=123
       - POSTGRES_DB=auth-db
+
+  zipkin-server:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    environment:
+      STORAGE_TYPE: mem
+    ports:
+      - "9411:9411"
+    restart: always
+    networks:
+      - icommerce-network
 
   product-db:
     image: postgres
@@ -81,3 +195,6 @@ volumes:
   mongo-volume: {}
   redis-volume: {}
   rabbitmq-volume: {}
+
+networks:
+  icommerce-network:

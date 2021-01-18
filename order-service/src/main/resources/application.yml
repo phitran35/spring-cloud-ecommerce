@@ -2,7 +2,7 @@ spring:
   # spring data mongodb configuration
   data:
     mongodb:
-      host: localhost
+      host: ${MONGO_HOST:localhost}
       port: 27018
       database: order-db
       authentication-database: admin

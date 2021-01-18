@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface CartOrderRepository extends CrudRepository<Order, Long> {
+public interface CartOrderRepository extends CrudRepository<Order, String> {
     List<Order> findByUsername(String username);
 }

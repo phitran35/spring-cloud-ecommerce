@@ -12,15 +12,15 @@ import java.util.List;
 @FeignClient(name = "cart-service", fallback = CartClient.CartClientFallback.class)
 public interface CartClient {
 
-    @GetMapping(value = "carts/{id}/get-all-items")
-    List<Item> getAllItemsFromCart(@PathVariable(value = "id") String cartId);
+    @GetMapping(value = "carts/get-all-items")
+    List<Item> getAllItemsFromCartFromCurrentUser();
 
     @DeleteMapping("/carts")
     void deleteCartByCurrentUser();
 
     class CartClientFallback implements CartClient {
         @Override
-        public List<Item> getAllItemsFromCart(String cartId) {
+        public List<Item> getAllItemsFromCartFromCurrentUser() {
             return Lists.newArrayList();
         }
         public void deleteCartByCurrentUser() {

@@ -4,13 +4,26 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8061/eureka/
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8061/eureka/}
 
 logging:
   level:
     org.springframework.cloud.netflix.zuul: TRACE
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+ribbon:
+  ReadTimeout: 60000
+  connection-timeout: 3000
+  eureka:
+    enabled: true
 
 zuul:
   sensitive-headers:
@@ -19,9 +32,21 @@ zuul:
     products:
       path: /products/**
       serviceId: product-service
-    audit-service:
-      path: /customer-activities/**
+    audits:
+      path: /audits/**
       serviceId: audit-service
     carts:
       path: /carts/**
       serviceId: cart-service
+    orders:
+      path: /orders/**
+      serviceId: order-service
+  ignoredServices: '*'
+  host:
+    time-to-live: -1
+    connect-timeout-millis: 5000
+    max-per-route-connections: 10000
+    max-total-connections: 5000
+    socket-timeout-millis: 60000
+  semaphore:
+    max-semaphores: 500
