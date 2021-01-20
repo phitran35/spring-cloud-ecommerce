@@ -16,13 +16,15 @@ to build an MVP version... For more details, plz drop a message to me
 1. User authentication and access control using Spring Security Oauth2 with Json Web Token 
 2. Spring actuator to monitor API usage including /health endpoint
 3. OpenAPI/Swagger for API documentation
-4. Spring Boot based Restful API including, Validation, Exception Handling
+4. Spring Boot based Restful API including Validation, Exception Handling
 7. Interacting with RabbitMQ server to publish and subscribe messages for auditing
 8. Hibernate Level 2 caching with EhCache - TODO
 
 ##Project architecture
 ### High-level design
+![High Level Design](files/icommerce-highelevel-design.png)
 ### Detail design
+![High Level Design](files/icommerce-detail-level.png)
 
 ### Spring Cloud components
 1. Eureka for Microservice Registration and Discovery and Dynamic scaling

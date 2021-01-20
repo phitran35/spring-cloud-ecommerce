@@ -13,7 +13,7 @@ import java.security.Principal;
 @Controller
 public class GreetingController {
 
-    @RequestMapping("/securedPage")
+    @RequestMapping("/greeting")
     public String securedPage(@AuthenticationPrincipal OidcUser oidcUser,
                               @RegisteredOAuth2AuthorizedClient("okta") OAuth2AuthorizedClient client, Model model, Principal principal) {
         model.addAttribute("username", principal.getName());

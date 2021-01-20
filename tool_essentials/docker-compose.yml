@@ -1,0 +1,85 @@
+version: "3"
+
+services:
+  auth-db:
+    image: postgres
+    volumes:
+      - auth-db-volume:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=auth-db
+
+  zipkin-server:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    environment:
+      STORAGE_TYPE: mem
+    ports:
+      - "9411:9411"
+    restart: always
+
+  product-db:
+    image: postgres
+    volumes:
+      - product-db-volume:/var/lib/postgresql/data
+    ports:
+      - 5434:5432
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=product-db
+
+  mongo:
+    image: mongo
+    volumes:
+      - mongo-volume:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    ports:
+      - 27018:27017
+    restart: unless-stopped
+
+  redis:
+    image: redis:6-alpine
+    volumes:
+      - redis-volume:/data
+    ports:
+      - 6379:6379
+    restart: unless-stopped
+
+  rabbitmq:
+    image: rabbitmq
+    volumes:
+      - rabbitmq-volume:/var/lib/rabbitmq
+    ports:
+      - 15677:15672
+      - 5677:5672
+    restart: unless-stopped
+
+  ## Grafana / Prometheus
+  grafana-server:
+    build: ../docker/grafana
+    container_name: grafana-server
+    mem_limit: 512M
+    ports:
+      - 3000:3000
+
+  prometheus-server:
+    build: ../docker/prometheus
+    container_name: prometheus-server
+    mem_limit: 512M
+    ports:
+      - 9091:9090
+
+volumes:
+  product-db-volume: {}
+  auth-db-volume: {}
+  mongo-volume: {}
+  redis-volume: {}
+  rabbitmq-volume: {}

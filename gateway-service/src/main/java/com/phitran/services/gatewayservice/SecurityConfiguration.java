@@ -14,7 +14,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.antMatcher("/**").authorizeRequests()
 //                .antMatchers("/", "/securedPage", "/swagger-ui.html**").permitAll()
                 .anyRequest().permitAll()
-                .and().oauth2Login().defaultSuccessUrl("/securedPage")
+                .and().oauth2Login().defaultSuccessUrl("/greeting")
                 .and().oauth2ResourceServer().jwt();
     }
 
