@@ -1,0 +1,5 @@
+spring:
+  # spring data redis configuration
+  redis:
+    host: redis-db
+    port: 6379

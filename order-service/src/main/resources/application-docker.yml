@@ -1,0 +1,13 @@
+spring:
+  # spring data mongodb configuration
+  data:
+    mongodb:
+      host: order-mongo-db
+      port: 27017
+      database: order-db
+      authentication-database: admin
+      username: admin
+      password: admin
+  # Zipkin
+  zipkin:
+    base-url: http://zipkin-server:9411/

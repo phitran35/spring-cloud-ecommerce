@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 import redis.clients.jedis.Jedis;
 
@@ -15,8 +17,14 @@ import java.util.Collection;
 public class CartRepositoryImpl implements CartRepository {
 
     private ObjectMapper objectMapper = new ObjectMapper();
-    private Jedis jedis = new Jedis();
+    private RedisTemplate redisTemplate;
+    private Jedis jedis;
 
+    @Autowired
+    public CartRepositoryImpl(RedisTemplate redisTemplate) {
+        this.redisTemplate = redisTemplate;
+        this.jedis = (Jedis) redisTemplate.getConnectionFactory().getConnection().getNativeConnection();
+    }
     @Override
     public void addItemToCart(String key, Object item) {
         try {

@@ -1,0 +1,8 @@
+spring:
+  # spring data redis configuration
+  redis:
+    host: redis-db
+    port: 6379
+  # Zipkin
+  zipkin:
+    base-url: http://zipkin-server:9411/

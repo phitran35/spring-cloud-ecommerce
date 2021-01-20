@@ -4,25 +4,3 @@ spring:
   cloud:
     config:
       uri: ${CLOUD_CONFIG_URL:http://localhost:8088}
-    # Define durable queue
-    stream:
-      bindings:
-        input:
-          # Define RabbitMQ exchange
-          destination: customer-activity
-          # Define durable queue
-          group: customer-activity-queue
-      default:
-        contentType: application/json
-  rabbitmq:
-    host: ${RABBITMQ_HOST:localhost}
-    port: 5677
-  # spring data mongodb configuration
-  data:
-    mongodb:
-      host: ${MONGO_HOST:localhost}
-      port: 27018
-      database: customer-audit-activity
-      authentication-database: admin
-      username: admin
-      password: admin
