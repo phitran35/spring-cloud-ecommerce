@@ -13,6 +13,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests(authorizeRequests -> authorizeRequests
                         .antMatchers("/v2/api-docs**").permitAll()
+                        .antMatchers("/actuator**").permitAll()
                         .antMatchers("/**").authenticated()
                         .anyRequest().authenticated()
                 )
