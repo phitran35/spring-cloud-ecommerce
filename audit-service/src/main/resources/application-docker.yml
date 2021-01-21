@@ -1,0 +1,27 @@
+spring:
+  cloud:
+    # Define durable queue
+    stream:
+      bindings:
+        input:
+          # Define RabbitMQ exchange
+          destination: customer-activity
+          # Define durable queue
+          group: customer-activity-queue
+      default:
+        contentType: application/json
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+  # spring data mongodb configuration
+  data:
+    mongodb:
+      host: mongo-db
+      port: 27017
+      database: customer-audit-activity
+      authentication-database: admin
+      username: admin
+      password: admin
+  # Zipkin
+  zipkin:
+    base-url: http://zipkin-server:9411/

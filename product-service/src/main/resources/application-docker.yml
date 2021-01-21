@@ -1,0 +1,14 @@
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    # spring data mongodb configuration
+  datasource:
+    url: jdbc:postgresql://mp-postgres:5432/product-db
+    username: root
+    password: 123
+    data: classpath:/script/data.sql
+    initialization-mode: always
+  # Zipkin
+  zipkin:
+    base-url: http://zipkin-server:9411/

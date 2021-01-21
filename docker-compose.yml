@@ -1,0 +1,249 @@
+version: "3"
+
+services:
+  config-service:
+    container_name: config-service
+    mem_limit: 512M
+    build:
+      context: config-service
+      dockerfile: Dockerfile
+    ports:
+      - "8088:8088"
+    restart: unless-stopped
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-service:8061/eureka
+    entrypoint: ["java", "-Dspring.profiles.active=native,docker","-jar","app.jar"]
+    networks:
+      - icommerce-network
+
+  discovery-service:
+    container_name: discovery-service
+    mem_limit: 1024M
+    build:
+      context: discovery-service
+      dockerfile: Dockerfile
+    ports:
+      - "8061:8061"
+    restart: unless-stopped
+    environment:
+      - CLOUD_CONFIG_URL=http://config-service:8088
+    depends_on:
+      - config-service
+    entrypoint: ["./dockerize","-wait=tcp://config-service:8088","-timeout=60s","--",
+                 "java", "-Dspring.profiles.active=docker","-jar","app.jar"]
+    networks:
+      - icommerce-network
+
+  gateway-service:
+    container_name: gateway-service
+    build:
+      context: gateway-service
+      dockerfile: Dockerfile
+    ports:
+      - "8060:8060"
+    restart: unless-stopped
+    environment:
+      - CLOUD_CONFIG_URL=http://config-service:8088
+    depends_on:
+      - config-service
+      - discovery-service
+      - zipkin-server
+    entrypoint: ["./dockerize","-wait=tcp://config-service:8088", "-wait=tcp://discovery-service:8061","-timeout=60s","--",
+                 "java","-Dspring.profiles.active=docker","-jar","app.jar"]
+    networks:
+      - icommerce-network
+
+  audit-service:
+    container_name: audit-service
+    build:
+      context: audit-service
+      dockerfile: Dockerfile
+    ports:
+      - "8200:8200"
+    restart: unless-stopped
+    environment:
+      - CLOUD_CONFIG_URL=http://config-service:8088
+    depends_on:
+      - config-service
+      - discovery-service
+      - zipkin-server
+      - mongo-db
+      - rabbitmq
+    entrypoint: ["./dockerize","-wait=tcp://config-service:8088", "-wait=tcp://discovery-service:8061","-timeout=60s","--",
+                 "java", "-Dspring.profiles.active=docker", "-jar","app.jar"]
+    networks:
+      - icommerce-network
+
+  product-service:
+    container_name: product-service
+    mem_limit: 512M
+    build:
+      context: product-service
+      dockerfile: Dockerfile
+    ports:
+      - "8100:8100"
+    restart: unless-stopped
+    environment:
+      - CLOUD_CONFIG_URL=http://config-service:8088
+    depends_on:
+      - config-service
+      - discovery-service
+      - zipkin-server
+      - mp-postgres
+      - rabbitmq
+    entrypoint: ["./dockerize", "-wait=tcp://config-service:8088", "-wait=tcp://discovery-service:8061","-timeout=60s","--",
+                 "java","-Dspring.profiles.active=docker","-jar","/app.jar"]
+    networks:
+      - icommerce-network
+
+  cart-service:
+    container_name: cart-service
+    build:
+      context: cart-service
+      dockerfile: Dockerfile
+    ports:
+      - "8300:8300"
+    restart: unless-stopped
+    environment:
+      - CLOUD_CONFIG_URL=http://config-service:8088
+    depends_on:
+      - config-service
+      - discovery-service
+      - zipkin-server
+      - redis-db
+    entrypoint: ["./dockerize","-wait=tcp://config-service:8088", "-wait=tcp://discovery-service:8061","-timeout=60s","--",
+                 "java","-Dspring.profiles.active=docker","-jar","/app.jar"]
+    networks:
+      - icommerce-network
+
+  order-service:
+    container_name: order-service
+    build:
+      context: order-service
+      dockerfile: Dockerfile
+    ports:
+      - "8400:8400"
+    restart: unless-stopped
+    environment:
+      - CLOUD_CONFIG_URL=http://config-service:8088
+    depends_on:
+      - config-service
+      - discovery-service
+      - zipkin-server
+      - order-mongo-db
+    entrypoint: ["./dockerize","-wait=tcp://config-service:8088", "-wait=tcp://discovery-service:8061","-timeout=60s","--",
+                 "java","-Dspring.profiles.active=docker","-jar","/app.jar"]
+    networks:
+      - icommerce-network
+
+  zipkin-server:
+    image: openzipkin/zipkin
+    mem_limit: 512M
+    container_name: zipkin
+    environment:
+      STORAGE_TYPE: mem
+    ports:
+      - "9411:9411"
+    restart: unless-stopped
+    networks:
+      - icommerce-network
+
+  mp-postgres:
+    image: postgres
+    container_name: mp-postgres
+    mem_limit: 512M
+    volumes:
+      - product-db-volume:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=product-db
+    networks:
+      - icommerce-network
+
+  mongo-db:
+    image: mongo
+    mem_limit: 512M
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - icommerce-network
+
+  order-mongo-db:
+    image: mongo
+    container_name: order-mongo-db
+    mem_limit: 512M
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    volumes:
+      - mongo-order-data:/data/db
+    ports:
+      - 27018:27017
+    networks:
+      - icommerce-network
+
+  redis-db:
+    image: redis:6-alpine
+    mem_limit: 512M
+    container_name: redis-db
+    volumes:
+      - redis-volume:/data
+    ports:
+      - 6379:6379
+    restart: unless-stopped
+    networks:
+      - icommerce-network
+
+  rabbitmq:
+    image: rabbitmq
+    mem_limit: 1024M
+    container_name: rabbitmq
+    volumes:
+      - rabbitmq-volume:/var/lib/rabbitmq
+    ports:
+      - 15677:15672
+      - 5677:5672
+    restart: unless-stopped
+    networks:
+      - icommerce-network
+
+  ## Grafana / Prometheus
+  grafana-server:
+    build: ./docker/grafana
+    container_name: grafana-server
+    mem_limit: 512M
+    ports:
+      - 3000:3000
+    networks:
+      - icommerce-network
+
+  prometheus-server:
+    build: ./docker/prometheus
+    container_name: prometheus-server
+    mem_limit: 512M
+    ports:
+      - 9091:9090
+    networks:
+      - icommerce-network
+
+volumes:
+  product-db-volume: {}
+  auth-db-volume: {}
+  mongo-data: {}
+  mongo-order-data: {}
+  redis-volume: {}
+  rabbitmq-volume: {}
+
+networks:
+  icommerce-network:

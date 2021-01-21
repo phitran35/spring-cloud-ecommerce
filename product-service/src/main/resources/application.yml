@@ -1,0 +1,38 @@
+okta:
+  oauth2:
+    issuer: https://dev-8918335.okta.com/oauth2/default
+    audience: api://default
+spring:
+  cloud:
+    # Define durable queue
+    stream:
+      bindings:
+        output:
+          destination: customer-activity
+        # Define durable queue (for guaranteed message delivery) which consumed from above exchange
+          producer:
+            requiredGroups: customer-activity-queue
+      default:
+        contentType: application/json
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: 5677
+    # spring data mongodb configuration
+  datasource:
+    url: jdbc:postgresql://${POSTGRESQL_HOST:localhost}:5434/product-db
+    username: root
+    password: 123
+    data: classpath:/script/data.sql
+    initialization-mode: always
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+  data:
+    repositories:
+      bootstrap-mode: default
+    web:
+      pageable:
+        page-parameter: page
+        size-parameter: size
+        sort-parameter: sort

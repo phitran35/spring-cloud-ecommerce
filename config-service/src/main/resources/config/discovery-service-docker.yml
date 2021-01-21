@@ -1,0 +1,11 @@
+eureka:
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+    enableSelfPreservation: false
+  instance:
+    hostname: discovery-service
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://discovery-service:${server.port}/eureka/

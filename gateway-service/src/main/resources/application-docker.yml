@@ -1,0 +1,4 @@
+spring:
+  # Zipkin
+  zipkin:
+    base-url: http://zipkin-server:9411/
