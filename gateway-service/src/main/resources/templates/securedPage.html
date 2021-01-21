@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+            <h1><p th:text="'Hello, ' + ${#authentication.principal.attributes.name} + '!'" /></h1>
+            <p th:text="'Email address: ' + ${#authentication.principal.attributes.email}" />
+            <p th:text="'accessToken: ' + ${accessToken.tokenValue}" /><br>
+            <p /> Please copy the access token above, then go to Swagger UI to then paste it into Authorization box with the pattern: Bearer {token}. That means, please pre-fill Bearer and put the token next to</p>
+            <a href="swagger-ui.html" target="_blank">Click here to go to Swagger UI</a>
+</body>
+</html>
