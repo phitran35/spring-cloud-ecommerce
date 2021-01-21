@@ -29,7 +29,7 @@ application to sell their products. In order to get to the market quickly, they 
 to build an MVP version... For more details, plz drop a message to me
 
 ### Technologies
-- Java 8
+- Java 11
 - Spring Boot 2
 - Spring Cloud
 - Docker
