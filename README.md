@@ -21,7 +21,7 @@
     - [Monitor](#Monitor)      
         - [ Distributed tracing Zipkin](#Distributed-tracing-Zipkin)      
         - [ Admin server to monitor services](#Admin-server-to-monitor-services)     
-    - [USAGE &  URLs](#usage--urls)          
+- [USAGE &  URLs](#usage--urls)          
 
 ## Requirements
 A small start-up wants to build a very simple online shopping
