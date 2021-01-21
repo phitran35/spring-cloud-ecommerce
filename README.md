@@ -21,7 +21,7 @@
     - [Monitor](#Monitor)      
         - [ Distributed tracing Zipkin](#Distributed-tracing-Zipkin)      
         - [ Admin server to monitor services](#Admin-server-to-monitor-services)     
-    - [USAGE &  URLs](#USAGE-&-URLs)          
+    - [USAGE &  URLs](#usage--urls)          
 
 ## Requirements
 A small start-up wants to build a very simple online shopping
@@ -70,7 +70,7 @@ A relational database: Postgresql is selected. For the simplicity of the assignm
 - To support customer filter, sort and search for products based on dynamic criteria, we have 2 options: *Spring Specification* and *QueryDSL*. Here we go with *QueryDSL* because it simplify the implementation.
 - To keep track all customer activity, we need to record all customer request parameters when client send GET request to our endpoint to view product detail or to filtering/sorting products. We use *Spring AOP* and define the PointCut to tell Spring which part of the code should be monitored, we also define Advice method to tell Spring how to record these parameters.
 - To make sure failure to store customer activity is completely transparent to customer and should have no impact to the activity itself, we use *Spring Async* to run our AOP Advice in a separate thread.
-- We use *Spring Cloud Stream* to send all customer activity data from Product Service to a message broker (to simplify the setup, here we use CloudAMQP - a cloud RabbitMQ service). In our case, Product Service acts as a message *Source*, and Audit Service acts as a message *Sink*. We don't want data will not be lost if Audit Service was temporary down, so we config queue as durable queue for guaranteed message delivery.
+- We use *Spring Cloud Stream* to send all customer activity data from Product Service to a message broker. In our case, Product Service acts as a message *Source*, and Audit Service acts as a message *Sink*. We don't want data will not be lost if Audit Service was temporary down, so we config queue as durable queue for guaranteed message delivery.
 
 #### Audit Service
 The Audit service listens for customer activities from the Product service. The storage requirements for the Audit service are:
@@ -88,6 +88,7 @@ The Shopping Cart service stores information about shopping cart of the customer
 - Need retrieve/lookup shopping cart data quickly and update shopping cart data quickly
 - Support only 1 simple query: query by customer.
 
+The HashMap data structure (with the key is customer and the value is shopping cart data) seems meet our needs because the get and put operations take only constant time.
 The HashMap data structure (with the key is customer and the value is shopping cart data) seems meet our needs because the get and put operations take only constant time.
 ![Cart Schema](files/cart-diagram.png)
 
@@ -158,6 +159,7 @@ The setup development workspace process is simpler than ever with following step
 After running up the services, go to [Swagger UI](http://localhost:8060/swagger-ui.html) to play around with the apis journey. 
 Before of that, [login](http://localhost:8060/login) first then copy the accessToken then pasting into Authorization box withe the format: Bearer {token} 
 
+Account to login: test1@mail.com/ !P@ssw0rd
 
 |     Application       |     URL          |
 | ------------- | ------------- |
