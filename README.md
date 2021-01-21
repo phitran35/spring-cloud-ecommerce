@@ -16,7 +16,7 @@
         - [Spring Cloud components](#Spring-Cloud-components)  
     - [Build and Deploy](#Build-and-Deploy)      
         - [Setup development workspace](#Setup-development-workspace)      
-        - [Deploy Using Docker](#Deploy Using Docker-by-one-Click)      
+        - [Deploy Using Docker](#deploy-using-docker-by-one-click)      
         - [Run the applications with Maven](#Run-the-applications-with-Maven)          
     - [Monitor](#Monitor)      
         - [ Distributed tracing Zipkin](#Distributed-tracing-Zipkin)      
@@ -67,7 +67,7 @@ The Product service stores information about all of our product. The storage req
 A relational database: Postgresql is selected. For the simplicity of the assignment, we simplify the data schema like this:
 ![Product Schema](files/product-service-diagram.png)
 
-- To support customer filter, sort and search for products based on dynamic criterias, we have 2 options: *Spring Specification* and *QueryDSL*. Here we go with *QueryDSL* because it simplify the implementation.
+- To support customer filter, sort and search for products based on dynamic criteria, we have 2 options: *Spring Specification* and *QueryDSL*. Here we go with *QueryDSL* because it simplify the implementation.
 - To keep track all customer activity, we need to record all customer request parameters when client send GET request to our endpoint to view product detail or to filtering/sorting products. We use *Spring AOP* and define the PointCut to tell Spring which part of the code should be monitored, we also define Advice method to tell Spring how to record these parameters.
 - To make sure failure to store customer activity is completely transparent to customer and should have no impact to the activity itself, we use *Spring Async* to run our AOP Advice in a separate thread.
 - We use *Spring Cloud Stream* to send all customer activity data from Product Service to a message broker (to simplify the setup, here we use CloudAMQP - a cloud RabbitMQ service). In our case, Product Service acts as a message *Source*, and Audit Service acts as a message *Sink*. We don't want data will not be lost if Audit Service was temporary down, so we config queue as durable queue for guaranteed message delivery.
